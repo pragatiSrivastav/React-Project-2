@@ -1,0 +1,40 @@
+1) App.js is parent component wahan se kuch bhi send karna ho to custom
+component we can use {props}
+
+ex: In App.js
+ 
+ fun App(){
+     return <CustomComponent give = {jo tumhe bhejna ho}/>
+ }
+
+ In CustomComponent.js
+
+ fun CustomComponent(props){
+     return <div>{props.give}</div>
+ }
+***********************************************************************
+2) but for example if you want to share data between siblings
+example Card.js and AddUser.js these both are child of App.js
+you have to use {props.children} for example you want to send something from
+Adduser.js to Card.js makesure to add props.children in Card.js while returning.
+***********************************************************************
+ 3)use of CSS Module
+ let us suppose name of our custom component is Card.js
+ Normal CSS file : Card.css 
+ CSS Module file name : Card.module.css
+ Normal import : import './Card.css'
+ CSS Module : import classes from './Card.module.css'
+ now suppose you want to add the className in your js how will you do?
+
+ Normal :
+    fun abc (){
+        return <p className="jo bhi class ka naam rakha ho css file mein"></p>
+    }
+
+ CSS module :
+    fun abc(){
+        return <p className={classes.jo bhi class ka naam rakha ho css file mein}></p>
+    }   
+
+ for more than one css class coming from diff source use:
+ {`${classes.A} ${props.B}`}   --> A is css of the same class B is css coming from different source
